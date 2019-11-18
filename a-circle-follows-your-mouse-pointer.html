@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>A circle follows your mouse pointer</title>
+		<style type="text/css">
+			.circle {
+				background: rgba(117, 177, 59, 0.5);
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				position: absolute;
+				z-index: 9;
+				pointer-events:none;
+				transition: ease width 0.3s, ease height 0.3s;
+			}
+
+			a:hover ~ .circle {
+				width: 60px;
+				height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>A circle follows your mouse pointer...</h1>
+		<p>
+			Circle's size changes when mouse pointer goes on a link
+		</p>
+		<a href="#">LINK 1</a>
+		<br /><br /><br /><br />
+		<a href="#">LINK 2</a>
+		<br /><br /><br /><br />
+		<a href="#">LINK 3</a>
+		<br /><br /><br /><br />
+		<div class="circle"></div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript">
+			$(document).on('mousemove', function(e){
+				setTimeout(function() {
+					$('.circle').css({
+						left:  e.pageX - 15,
+						top:   e.pageY - 15
+					});
+				}, 100)
+			});
+		</script>
+	</body>
+</html>
